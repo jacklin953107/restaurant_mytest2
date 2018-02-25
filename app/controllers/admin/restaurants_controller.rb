@@ -1,5 +1,6 @@
 class Admin::RestaurantsController < ApplicationController
   before_action :authenticate_admin
+  before_action :find_restaurant, only: [:show]
   def index
     @restaurants = Restaurant.all
   end
@@ -16,6 +17,9 @@ class Admin::RestaurantsController < ApplicationController
       render :new
     end
   end
+  def show
+
+  end
 
   private
   def authenticate_admin
@@ -26,5 +30,8 @@ class Admin::RestaurantsController < ApplicationController
   end
   def restaurant_params
     params.require(:restaurant).permit(:name, :tel, :address, :opening_hours, :description)
+  end
+  def find_restaurant
+    @restaurant = Restaurant.find(params[:id])
   end
 end
