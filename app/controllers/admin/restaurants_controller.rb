@@ -1,6 +1,6 @@
 class Admin::RestaurantsController < ApplicationController
   before_action :authenticate_admin
-  before_action :find_restaurant, only: [:show, :edit, :update]
+  before_action :find_restaurant, only: [:show, :edit, :update, :destroy]
   def index
     @restaurants = Restaurant.all
   end
@@ -28,6 +28,14 @@ class Admin::RestaurantsController < ApplicationController
     else
       flash[:alert] = "餐廳資料修改失敗"
       render :edit
+    end
+  end
+  def destroy
+    if @restaurant.destroy
+      flash[:notice] = "餐廳刪除成功"
+      redirect_to admin_restaurants_path
+    else
+      flash[:alert] = "餐廳無法刪除"
     end
   end
 
