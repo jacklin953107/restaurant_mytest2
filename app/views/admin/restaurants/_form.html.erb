@@ -23,5 +23,9 @@
     <%= f.label :description, '描述' %>
     <%= f.text_field :description %>
 
+    <%= f.label :image, "照片" %>
+    <%= image_tag @restaurant.image, width: '300px' if @restaurant.image? %>
+    <%= f.file_field :image %>
+
     <%= f.submit  %>
 <% end %>
