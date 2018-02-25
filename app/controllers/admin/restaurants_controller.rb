@@ -1,6 +1,6 @@
 class Admin::RestaurantsController < ApplicationController
   before_action :authenticate_admin
-  before_action :find_restaurant, only: [:show]
+  before_action :find_restaurant, only: [:show, :edit, :update]
   def index
     @restaurants = Restaurant.all
   end
@@ -18,7 +18,17 @@ class Admin::RestaurantsController < ApplicationController
     end
   end
   def show
-
+  end
+  def edit
+  end
+  def update
+    if @restaurant.update(restaurant_params)
+      flashp[:notice] = "餐廳資料修改成功"
+      redirect_to admin_restaurants_path
+    else
+      flash[:alert] = "餐廳資料修改失敗"
+      render :edit
+    end
   end
 
   private
