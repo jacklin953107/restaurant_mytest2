@@ -9,12 +9,12 @@
   </head>
 
   <body>
-    <%= notice %>
-    <%= alert %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <% if current_user %>
-      Hi! <%= currnet_user.email %>
+      Hi! <%= current_user.email %>
         <%= link_to '登出', destroy_user_session_path, method: :delete %> |
-        <%= linkt_to '修改密碼', edit_user_registration_path %>
+        <%= link_to '修改密碼', edit_user_registration_path %>
     <% else %>
         <%= link_to '登入', new_user_session_path %> |
         <%= link_to '註冊', new_user_registration_path %>
