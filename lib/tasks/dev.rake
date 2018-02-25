@@ -10,12 +10,13 @@ namespace :dev do
       filelink_array.push(filelink)
     end
 
-    3.times do |i|
+    50.times do |i|
       restaurant = Restaurant.new(name: FFaker::Name.name,
                                   opening_hours: FFaker::Time.date,
                                   address: FFaker::Address.street_address,
                                   description: FFaker::Lorem.paragraph,
-                                  tel: FFaker::PhoneNumber.phone_number
+                                  tel: FFaker::PhoneNumber.phone_number,
+                                  category: Category.all.sample
       )
 
       restaurant.image = filelink_array[rand(filelink_array.size)].url
