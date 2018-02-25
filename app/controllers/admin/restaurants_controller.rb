@@ -2,7 +2,7 @@ class Admin::RestaurantsController < ApplicationController
   before_action :authenticate_admin
   before_action :find_restaurant, only: [:show, :edit, :update, :destroy]
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.page(params[:page]).per(2)
   end
   def new
     @restaurant = Restaurant.new
