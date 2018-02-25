@@ -1,0 +1,27 @@
+<% if @restaurant.errors.any? %>
+    <h2>We have some errors here!</h2>
+    <ul>
+      <%= @restaurant.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<%= form_for [:admin, @restaurant] do |f| %>
+    <%= f.label :name, '店名' %>
+    <%= f.text_field :name %>
+
+    <%= f.label :tel, '電話' %>
+    <%= f.text_field :tel %>
+
+    <%= f.label :address, '地址' %>
+    <%= f.text_field :address %>
+
+    <%= f.label :opening_hours, '營業時間' %>
+    <%= f.text_field :opening_hours %>
+
+    <%= f.label :description, '描述' %>
+    <%= f.text_field :description %>
+
+    <%= f.submit  %>
+<% end %>
