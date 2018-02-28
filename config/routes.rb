@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
   resources :categories, only: :show
+  resources :users, only: [:show, :edit, :update]
   namespace :admin do
     resources :restaurants
     resources :categories
