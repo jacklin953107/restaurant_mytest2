@@ -3,7 +3,7 @@
     <div class="col-md-10 col-md-offset-1">
 
       <!-- page-header 裡面顯示個人檔案資料 -->
-      <div class="page-header">
+      <div class="page-header edit_user">
 
         <div class="col-md-3 col-sm-4">
           <div class="text-center">
@@ -24,9 +24,24 @@
       </div>
 
       <br>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong><%= @commented_restaurants.count %></strong> 已評論餐廳</h3>
+        </div>
+        <div class="panel-body">
+          <% @commented_restaurants.each do |restaurant| %>
+              <%= link_to restaurant_path(restaurant) do %>
+                  <div class="my-restaurant">
+                    <div>
+                      <%= image_tag restaurant.image, class: "img-responsive img-rounded" %>
+                    </div>
+                    <h5><%= restaurant.name %></h5>
+                  </div>
+              <% end %>
 
-
-
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
